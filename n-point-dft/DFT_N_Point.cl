@@ -1,14 +1,14 @@
 //N point Dft kernel code 
 
 # include <clc.h>
-# define len 64 //// denotes value of N point
+# define len 64                    // denotes value of N point
 __kernel __attribute__ ((reqd_work_group_size(2*len,1,1)))
 void dft(
 	__global const float2 *in, // complex values input
 	__global float2 *out,      // complex values output
-	int length,                 // number of input and output values
-	int sign)                   // sign modifier in the exponential :
-	                            // 1 for forward transform, -1 for backward.
+	int length,                // number of input and output values
+	int sign)                  // sign modifier in the exponential :
+	                           // 1 for forward transform, -1 for backward.
 {
 	// Get the varying parameter of the parallel execution :
 	int i = get_global_id(0);
